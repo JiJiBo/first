@@ -21,7 +21,7 @@ import org.jooq.Identity;
 import org.jooq.Index;
 import org.jooq.Name;
 import org.jooq.Record;
-import org.jooq.Row7;
+import org.jooq.Row8;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -43,7 +43,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Pages extends TableImpl<PagesRecord> {
 
-    private static final long serialVersionUID = -70590479;
+    private static final long serialVersionUID = -638476253;
 
     /**
      * The reference instance of <code>mypages.pages</code>
@@ -67,6 +67,11 @@ public class Pages extends TableImpl<PagesRecord> {
      * The column <code>mypages.pages.bookId</code>. 书Id
      */
     public final TableField<PagesRecord, Long> BOOKID = createField(DSL.name("bookId"), org.jooq.impl.SQLDataType.BIGINT, this, "书Id");
+
+    /**
+     * The column <code>mypages.pages.index</code>. 章节索引
+     */
+    public final TableField<PagesRecord, Long> INDEX = createField(DSL.name("index"), org.jooq.impl.SQLDataType.BIGINT, this, "章节索引");
 
     /**
      * The column <code>mypages.pages.title</code>. 文章标题
@@ -178,11 +183,11 @@ public class Pages extends TableImpl<PagesRecord> {
     }
 
     // -------------------------------------------------------------------------
-    // Row7 type methods
+    // Row8 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row7<Long, Long, String, String, String, LocalDateTime, LocalDateTime> fieldsRow() {
-        return (Row7) super.fieldsRow();
+    public Row8<Long, Long, Long, String, String, String, LocalDateTime, LocalDateTime> fieldsRow() {
+        return (Row8) super.fieldsRow();
     }
 }

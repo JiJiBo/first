@@ -5,7 +5,6 @@ package com.rulerbug.zoo;
 
 
 import com.rulerbug.zoo.tables.Allbooks;
-import com.rulerbug.zoo.tables.Books;
 import com.rulerbug.zoo.tables.Pages;
 
 import javax.annotation.Generated;
@@ -33,7 +32,6 @@ public class Indexes {
     // -------------------------------------------------------------------------
 
     public static final Index ALLBOOKS_PRIMARY = Indexes0.ALLBOOKS_PRIMARY;
-    public static final Index BOOKS_PRIMARY = Indexes0.BOOKS_PRIMARY;
     public static final Index PAGES_PRIMARY = Indexes0.PAGES_PRIMARY;
 
     // -------------------------------------------------------------------------
@@ -42,7 +40,6 @@ public class Indexes {
 
     private static class Indexes0 {
         public static Index ALLBOOKS_PRIMARY = Internal.createIndex("PRIMARY", Allbooks.ALLBOOKS, new OrderField[] { Allbooks.ALLBOOKS.ID }, true);
-        public static Index BOOKS_PRIMARY = Internal.createIndex("PRIMARY", Books.BOOKS, new OrderField[] { Books.BOOKS.ID }, true);
         public static Index PAGES_PRIMARY = Internal.createIndex("PRIMARY", Pages.PAGES, new OrderField[] { Pages.PAGES.ID }, true);
     }
 }

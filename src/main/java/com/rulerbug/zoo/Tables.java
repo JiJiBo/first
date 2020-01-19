@@ -5,7 +5,6 @@ package com.rulerbug.zoo;
 
 
 import com.rulerbug.zoo.tables.Allbooks;
-import com.rulerbug.zoo.tables.Books;
 import com.rulerbug.zoo.tables.Pages;
 
 import javax.annotation.Generated;
@@ -28,11 +27,6 @@ public class Tables {
      * The table <code>mypages.allBooks</code>.
      */
     public static final Allbooks ALLBOOKS = Allbooks.ALLBOOKS;
-
-    /**
-     * The table <code>mypages.books</code>.
-     */
-    public static final Books BOOKS = Books.BOOKS;
 
     /**
      * The table <code>mypages.pages</code>.

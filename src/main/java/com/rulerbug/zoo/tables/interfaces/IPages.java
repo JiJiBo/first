@@ -44,6 +44,16 @@ public interface IPages extends Serializable {
     public Long getBookid();
 
     /**
+     * Setter for <code>mypages.pages.index</code>. 章节索引
+     */
+    public void setIndex(Long value);
+
+    /**
+     * Getter for <code>mypages.pages.index</code>. 章节索引
+     */
+    public Long getIndex();
+
+    /**
      * Setter for <code>mypages.pages.title</code>. 文章标题
      */
     public void setTitle(String value);

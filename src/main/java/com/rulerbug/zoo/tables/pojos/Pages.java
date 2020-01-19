@@ -24,10 +24,11 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Pages implements IPages {
 
-    private static final long serialVersionUID = -964015355;
+    private static final long serialVersionUID = 208524555;
 
     private Long          id;
     private Long          bookid;
+    private Long          index;
     private String        title;
     private String        smalltitle;
     private String        context;
@@ -39,6 +40,7 @@ public class Pages implements IPages {
     public Pages(IPages value) {
         this.id = value.getId();
         this.bookid = value.getBookid();
+        this.index = value.getIndex();
         this.title = value.getTitle();
         this.smalltitle = value.getSmalltitle();
         this.context = value.getContext();
@@ -49,6 +51,7 @@ public class Pages implements IPages {
     public Pages(
         Long          id,
         Long          bookid,
+        Long          index,
         String        title,
         String        smalltitle,
         String        context,
@@ -57,6 +60,7 @@ public class Pages implements IPages {
     ) {
         this.id = id;
         this.bookid = bookid;
+        this.index = index;
         this.title = title;
         this.smalltitle = smalltitle;
         this.context = context;
@@ -82,6 +86,16 @@ public class Pages implements IPages {
     @Override
     public void setBookid(Long bookid) {
         this.bookid = bookid;
+    }
+
+    @Override
+    public Long getIndex() {
+        return this.index;
+    }
+
+    @Override
+    public void setIndex(Long index) {
+        this.index = index;
     }
 
     @Override
@@ -140,6 +154,7 @@ public class Pages implements IPages {
 
         sb.append(id);
         sb.append(", ").append(bookid);
+        sb.append(", ").append(index);
         sb.append(", ").append(title);
         sb.append(", ").append(smalltitle);
         sb.append(", ").append(context);
@@ -158,6 +173,7 @@ public class Pages implements IPages {
     public void from(IPages from) {
         setId(from.getId());
         setBookid(from.getBookid());
+        setIndex(from.getIndex());
         setTitle(from.getTitle());
         setSmalltitle(from.getSmalltitle());
         setContext(from.getContext());

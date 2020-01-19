@@ -5,10 +5,8 @@ package com.rulerbug.zoo;
 
 
 import com.rulerbug.zoo.tables.Allbooks;
-import com.rulerbug.zoo.tables.Books;
 import com.rulerbug.zoo.tables.Pages;
 import com.rulerbug.zoo.tables.records.AllbooksRecord;
-import com.rulerbug.zoo.tables.records.BooksRecord;
 import com.rulerbug.zoo.tables.records.PagesRecord;
 
 import javax.annotation.Generated;
@@ -37,7 +35,6 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     public static final Identity<AllbooksRecord, Long> IDENTITY_ALLBOOKS = Identities0.IDENTITY_ALLBOOKS;
-    public static final Identity<BooksRecord, Long> IDENTITY_BOOKS = Identities0.IDENTITY_BOOKS;
     public static final Identity<PagesRecord, Long> IDENTITY_PAGES = Identities0.IDENTITY_PAGES;
 
     // -------------------------------------------------------------------------
@@ -45,7 +42,6 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     public static final UniqueKey<AllbooksRecord> KEY_ALLBOOKS_PRIMARY = UniqueKeys0.KEY_ALLBOOKS_PRIMARY;
-    public static final UniqueKey<BooksRecord> KEY_BOOKS_PRIMARY = UniqueKeys0.KEY_BOOKS_PRIMARY;
     public static final UniqueKey<PagesRecord> KEY_PAGES_PRIMARY = UniqueKeys0.KEY_PAGES_PRIMARY;
 
     // -------------------------------------------------------------------------
@@ -59,13 +55,11 @@ public class Keys {
 
     private static class Identities0 {
         public static Identity<AllbooksRecord, Long> IDENTITY_ALLBOOKS = Internal.createIdentity(Allbooks.ALLBOOKS, Allbooks.ALLBOOKS.ID);
-        public static Identity<BooksRecord, Long> IDENTITY_BOOKS = Internal.createIdentity(Books.BOOKS, Books.BOOKS.ID);
         public static Identity<PagesRecord, Long> IDENTITY_PAGES = Internal.createIdentity(Pages.PAGES, Pages.PAGES.ID);
     }
 
     private static class UniqueKeys0 {
         public static final UniqueKey<AllbooksRecord> KEY_ALLBOOKS_PRIMARY = Internal.createUniqueKey(Allbooks.ALLBOOKS, "KEY_allBooks_PRIMARY", Allbooks.ALLBOOKS.ID);
-        public static final UniqueKey<BooksRecord> KEY_BOOKS_PRIMARY = Internal.createUniqueKey(Books.BOOKS, "KEY_books_PRIMARY", Books.BOOKS.ID);
         public static final UniqueKey<PagesRecord> KEY_PAGES_PRIMARY = Internal.createUniqueKey(Pages.PAGES, "KEY_pages_PRIMARY", Pages.PAGES.ID);
     }
 }
