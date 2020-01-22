@@ -59,5 +59,4 @@ spring:
 file:
   staticAccessPath: /file/**
   uploadFolder: /home/cache/
-password: rulerbug
 

@@ -21,7 +21,7 @@ import org.jooq.Identity;
 import org.jooq.Index;
 import org.jooq.Name;
 import org.jooq.Record;
-import org.jooq.Row5;
+import org.jooq.Row6;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -43,7 +43,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Allbooks extends TableImpl<AllbooksRecord> {
 
-    private static final long serialVersionUID = 280703245;
+    private static final long serialVersionUID = 1079993087;
 
     /**
      * The reference instance of <code>mypages.allBooks</code>
@@ -72,6 +72,11 @@ public class Allbooks extends TableImpl<AllbooksRecord> {
      * The column <code>mypages.allBooks.author</code>. 作者
      */
     public final TableField<AllbooksRecord, String> AUTHOR = createField(DSL.name("author"), org.jooq.impl.SQLDataType.VARCHAR(255), this, "作者");
+
+    /**
+     * The column <code>mypages.allBooks.password</code>. 写书的密码
+     */
+    public final TableField<AllbooksRecord, String> PASSWORD = createField(DSL.name("password"), org.jooq.impl.SQLDataType.VARCHAR(255), this, "写书的密码");
 
     /**
      * The column <code>mypages.allBooks.createTime</code>. 开始创作时间
@@ -168,11 +173,11 @@ public class Allbooks extends TableImpl<AllbooksRecord> {
     }
 
     // -------------------------------------------------------------------------
-    // Row5 type methods
+    // Row6 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row5<Long, String, String, LocalDateTime, LocalDateTime> fieldsRow() {
-        return (Row5) super.fieldsRow();
+    public Row6<Long, String, String, String, LocalDateTime, LocalDateTime> fieldsRow() {
+        return (Row6) super.fieldsRow();
     }
 }

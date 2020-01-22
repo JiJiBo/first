@@ -24,11 +24,12 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Allbooks implements IAllbooks {
 
-    private static final long serialVersionUID = -1754133089;
+    private static final long serialVersionUID = 2040125824;
 
     private Long          id;
     private String        bookname;
     private String        author;
+    private String        password;
     private LocalDateTime createtime;
     private LocalDateTime changetime;
 
@@ -38,6 +39,7 @@ public class Allbooks implements IAllbooks {
         this.id = value.getId();
         this.bookname = value.getBookname();
         this.author = value.getAuthor();
+        this.password = value.getPassword();
         this.createtime = value.getCreatetime();
         this.changetime = value.getChangetime();
     }
@@ -46,12 +48,14 @@ public class Allbooks implements IAllbooks {
         Long          id,
         String        bookname,
         String        author,
+        String        password,
         LocalDateTime createtime,
         LocalDateTime changetime
     ) {
         this.id = id;
         this.bookname = bookname;
         this.author = author;
+        this.password = password;
         this.createtime = createtime;
         this.changetime = changetime;
     }
@@ -87,6 +91,16 @@ public class Allbooks implements IAllbooks {
     }
 
     @Override
+    public String getPassword() {
+        return this.password;
+    }
+
+    @Override
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
     public LocalDateTime getCreatetime() {
         return this.createtime;
     }
@@ -113,6 +127,7 @@ public class Allbooks implements IAllbooks {
         sb.append(id);
         sb.append(", ").append(bookname);
         sb.append(", ").append(author);
+        sb.append(", ").append(password);
         sb.append(", ").append(createtime);
         sb.append(", ").append(changetime);
 
@@ -129,6 +144,7 @@ public class Allbooks implements IAllbooks {
         setId(from.getId());
         setBookname(from.getBookname());
         setAuthor(from.getAuthor());
+        setPassword(from.getPassword());
         setCreatetime(from.getCreatetime());
         setChangetime(from.getChangetime());
     }

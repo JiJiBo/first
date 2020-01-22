@@ -54,6 +54,16 @@ public interface IAllbooks extends Serializable {
     public String getAuthor();
 
     /**
+     * Setter for <code>mypages.allBooks.password</code>. 写书的密码
+     */
+    public void setPassword(String value);
+
+    /**
+     * Getter for <code>mypages.allBooks.password</code>. 写书的密码
+     */
+    public String getPassword();
+
+    /**
      * Setter for <code>mypages.allBooks.createTime</code>. 开始创作时间
      */
     public void setCreatetime(LocalDateTime value);

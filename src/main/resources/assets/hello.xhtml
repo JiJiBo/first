@@ -8,7 +8,8 @@
 </head>
 <body>
 <h1>欢迎来到规则漏洞的首页</h1>
+<a href ="creatABook.do">写本书</a><br>
 <#list books as book>
-<a href="${book.id}/pages.do">${book.bookName}</a>
+    <a href="${book.id}/pages.do">${book.bookName}</a></br>
 </#list>
 </body></html>

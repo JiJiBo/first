@@ -57,6 +57,7 @@ public class HtmlController {
         );
         view.addObject("pages", pages);
         view.addObject("bookid", bookid);
+        view.addObject("author", book.getAuthor());
         view.addObject("bookname", book.getBookname());
         return view;
     }
@@ -78,6 +79,30 @@ public class HtmlController {
         AllbooksRecord book = dsl.selectFrom(Tables.ALLBOOKS).where(Tables.ALLBOOKS.ID.eq(bookid)).fetchOne();
         view.addObject("bookId", bookid);
         view.addObject("bookName", book.getBookname());
+        return view;
+    }
+
+    @RequestMapping("{bookid}/delTheBook.do")
+    public ModelAndView delTheBook(@PathVariable("bookid") Long bookid) {
+        ModelAndView view = new ModelAndView("delTheBook");
+        AllbooksRecord book = dsl.selectFrom(Tables.ALLBOOKS).where(Tables.ALLBOOKS.ID.eq(bookid)).fetchOne();
+        view.addObject("bookId", bookid);
+        view.addObject("bookName", book.getBookname());
+        return view;
+    }
+
+    @RequestMapping("{pageid}/delThePage.do")
+    public ModelAndView delThePage(@PathVariable("pageid") Long pageid) {
+        ModelAndView view = new ModelAndView("delThePage");
+        PagesRecord pagesRecord = dsl.selectFrom(Tables.PAGES).where(Tables.PAGES.ID.eq(pageid)).fetchOne();
+        view.addObject("bookId", pageid);
+        view.addObject("pageName", pagesRecord.getTitle() + "----" + pagesRecord.getSmalltitle());
+        return view;
+    }
+
+    @RequestMapping("creatABook.do")
+    public ModelAndView creatABook() {
+        ModelAndView view = new ModelAndView("creatABook");
         return view;
     }
 }

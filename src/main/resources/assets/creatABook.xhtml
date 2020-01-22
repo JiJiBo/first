@@ -8,13 +8,11 @@
     <script src="/static/js/jquery-1.10.2.min.js"></script>
 </head>
 <body>
-<h1>${bookName}</h1>
-<form action="../api/writeAPage.do" method="post">
-    <p>bookId: <input type="text" name="bookid" value="${bookId}"/></p>
-    <p>password: <input type="text" name="password"/></p>
-    <p>title: <input type="text" name="title"/></p>
-    <p>smallTitle: <input type="text" name="smallTitle"/></p>
-    <p>内容: <input type="text" name="context"/></p>
+<h1>写本书吧</h1>
+<form action="../api/creatABook.do" method="post">
+    <p>设置个密码: <input type="text" name="password"/></p>
+    <p>书名: <input type="text" name="bookName"/></p>
+    <p>作者: <input type="text" name="author"/></p>
     <input type="submit" value="提交"/>
 </form>
 </body>
