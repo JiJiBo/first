@@ -6,8 +6,10 @@ package com.rulerbug.zoo;
 
 import com.rulerbug.zoo.tables.Allbooks;
 import com.rulerbug.zoo.tables.Pages;
+import com.rulerbug.zoo.tables._Warning;
 import com.rulerbug.zoo.tables.records.AllbooksRecord;
 import com.rulerbug.zoo.tables.records.PagesRecord;
+import com.rulerbug.zoo.tables.records._WarningRecord;
 
 import javax.annotation.Generated;
 
@@ -36,6 +38,7 @@ public class Keys {
 
     public static final Identity<AllbooksRecord, Long> IDENTITY_ALLBOOKS = Identities0.IDENTITY_ALLBOOKS;
     public static final Identity<PagesRecord, Long> IDENTITY_PAGES = Identities0.IDENTITY_PAGES;
+    public static final Identity<_WarningRecord, Integer> IDENTITY__WARNING = Identities0.IDENTITY__WARNING;
 
     // -------------------------------------------------------------------------
     // UNIQUE and PRIMARY KEY definitions
@@ -43,6 +46,7 @@ public class Keys {
 
     public static final UniqueKey<AllbooksRecord> KEY_ALLBOOKS_PRIMARY = UniqueKeys0.KEY_ALLBOOKS_PRIMARY;
     public static final UniqueKey<PagesRecord> KEY_PAGES_PRIMARY = UniqueKeys0.KEY_PAGES_PRIMARY;
+    public static final UniqueKey<_WarningRecord> KEY__WARNING_PRIMARY = UniqueKeys0.KEY__WARNING_PRIMARY;
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
@@ -56,10 +60,12 @@ public class Keys {
     private static class Identities0 {
         public static Identity<AllbooksRecord, Long> IDENTITY_ALLBOOKS = Internal.createIdentity(Allbooks.ALLBOOKS, Allbooks.ALLBOOKS.ID);
         public static Identity<PagesRecord, Long> IDENTITY_PAGES = Internal.createIdentity(Pages.PAGES, Pages.PAGES.ID);
+        public static Identity<_WarningRecord, Integer> IDENTITY__WARNING = Internal.createIdentity(_Warning._WARNING, _Warning._WARNING.ID);
     }
 
     private static class UniqueKeys0 {
         public static final UniqueKey<AllbooksRecord> KEY_ALLBOOKS_PRIMARY = Internal.createUniqueKey(Allbooks.ALLBOOKS, "KEY_allBooks_PRIMARY", Allbooks.ALLBOOKS.ID);
         public static final UniqueKey<PagesRecord> KEY_PAGES_PRIMARY = Internal.createUniqueKey(Pages.PAGES, "KEY_pages_PRIMARY", Pages.PAGES.ID);
+        public static final UniqueKey<_WarningRecord> KEY__WARNING_PRIMARY = Internal.createUniqueKey(_Warning._WARNING, "KEY__WARNING_PRIMARY", _Warning._WARNING.ID);
     }
 }

@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.method.annotation.InitBinderDataBinderFactory;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
@@ -40,7 +41,13 @@ public class ApiController {
         if (!PASSWORD.equals(password)) {
             return R.error();
         }
-        Long index = dsl.selectFrom(Tables.PAGES).orderBy(Tables.PAGES.INDEX.desc()).fetchOne().getIndex();
+        PagesRecord pagesRecord = dsl.selectFrom(Tables.PAGES).orderBy(Tables.PAGES.INDEX.desc()).fetch().get(0);
+        Long index = 0L;
+        if (null == pagesRecord) {
+            index = 0L;
+        } else {
+            index = pagesRecord.getIndex();
+        }
         PagesRecord pages = new PagesRecord();
         pages.setBookid(bookid);
         pages.setTitle(title);

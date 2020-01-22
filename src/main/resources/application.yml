@@ -21,7 +21,7 @@ spring:
     url: jdbc:mysql://106.13.176.31:3306/mypages?serverTime=Aisa/Shanghai&useUnicode=true&characterEncoding=UTF-8
     driverClassName: com.mysql.cj.jdbc.Driver
     username: root
-    password: root
+    password: 2Y2w1s8vd5saAFgdQc8M
     # C3CCA85DC41E8AC91F140B3A547042EB
     # 初始化大小，最小，最大
     initialSize: 5

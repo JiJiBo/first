@@ -6,6 +6,7 @@ package com.rulerbug.zoo;
 
 import com.rulerbug.zoo.tables.Allbooks;
 import com.rulerbug.zoo.tables.Pages;
+import com.rulerbug.zoo.tables._Warning;
 
 import javax.annotation.Generated;
 
@@ -32,4 +33,9 @@ public class Tables {
      * The table <code>mypages.pages</code>.
      */
     public static final Pages PAGES = Pages.PAGES;
+
+    /**
+     * The table <code>mypages._WARNING</code>.
+     */
+    public static final _Warning _WARNING = _Warning._WARNING;
 }
