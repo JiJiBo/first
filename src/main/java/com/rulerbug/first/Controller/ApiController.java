@@ -1,6 +1,7 @@
 package com.rulerbug.first.Controller;
 
 import com.rulerbug.first.Utils.R;
+import com.rulerbug.first.Utils.TextUtils;
 import com.rulerbug.zoo.Tables;
 import com.rulerbug.zoo.tables.Pages;
 import com.rulerbug.zoo.tables.records.AllbooksRecord;
@@ -36,6 +37,9 @@ public class ApiController {
             String context,
             String password
     ) {
+        if (TextUtils.isEmpty(title, smallTitle, context, password)) {
+            return R.error("hava null");
+        }
         AllbooksRecord allbooksRecord = dsl.selectFrom(Tables.ALLBOOKS).where(Tables.ALLBOOKS.ID.eq(bookid)).fetchOne();
         String PASSWORD = allbooksRecord.getPassword();
         if (!PASSWORD.equals(password)) {
@@ -73,6 +77,9 @@ public class ApiController {
             String bookName,
             String author
     ) {
+        if (TextUtils.isEmpty(password, bookName, author)) {
+            return R.error("hava null");
+        }
         AllbooksRecord record = new AllbooksRecord();
         record.setPassword(password);
         record.setBookname(bookName);

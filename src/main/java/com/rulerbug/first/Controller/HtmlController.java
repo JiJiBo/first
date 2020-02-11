@@ -29,10 +29,20 @@ public class HtmlController {
                 action -> {
                     M m = M.c();
                     Field<?>[] fields = action.fields();
+                    boolean isHaveNull = false;
                     for (Field<?> field : fields) {
-                        m.p(field.getName(), field.getValue(action));
+                        Object value = field.getValue(action);
+                        if (null == value) {
+                            isHaveNull = true;
+                        } else {
+                            m.p(field.getName(), field.getValue(action));
+                        }
+
                     }
-                    books.a(m);
+                    if (!isHaveNull) {
+                        books.a(m);
+                    }
+
                 }
         );
         view.addObject("books", books);

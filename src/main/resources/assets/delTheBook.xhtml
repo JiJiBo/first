@@ -10,7 +10,7 @@
 <body>
 <h1>${bookName}</h1>
 <form action="../api/delThebook.do" method="post">
-    <p>bookId: <input type="text" name="bookid" value="${bookId}"/></p>
+    <p>bookId: <input type="text" name="bookid" value="${bookId?c}"/></p>
     <p>password: <input type="text" name="password"/></p>
     <input type="submit" value="提交"/>
 </form>

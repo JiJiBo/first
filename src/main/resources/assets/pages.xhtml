@@ -9,13 +9,13 @@
 <body>
 <h1>${bookname}</h1>
 <h2>作者  ${author}</h2>
-<a href="../${bookid}/addApage.do">写文章</a>
+<a href="../${bookid?c}/addApage.do">写文章</a>
 <br>
-<a href="../${bookid}/delTheBook.do">删除本书</a>
+<a href="../${bookid?c}/delTheBook.do">删除本书</a>
 <br>
 <#list pages as page>
-<a href="../${page.id}/page.do">${page.title} ${page.smallTitle}</a><a>--------</a><a
-        href="../${page.id}/delThePage.do">删除本章节</a><br>
+<a href="../${page.id?c}/page.do">${page.title} ${page.smallTitle}</a><a>--------</a><a
+        href="../${page.id?c}/delThePage.do">删除本章节</a><br>
 </#list>
 
 </body>

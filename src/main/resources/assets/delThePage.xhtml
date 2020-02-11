@@ -10,7 +10,7 @@
 <body>
 <h1>${pageName}</h1>
 <form action="../api/delThePage.do" method="post">
-    <p>pageid: <input type="text" name="pageid" value="${pageid}"/></p>
+    <p>pageid: <input type="text" name="pageid" value="${pageid?c}"/></p>
     <p>password: <input type="text" name="password"/></p>
     <input type="submit" value="提交"/>
 </form>
