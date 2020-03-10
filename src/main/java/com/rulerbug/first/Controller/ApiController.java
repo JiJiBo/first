@@ -3,23 +3,16 @@ package com.rulerbug.first.Controller;
 import com.rulerbug.first.Utils.R;
 import com.rulerbug.first.Utils.TextUtils;
 import com.rulerbug.zoo.Tables;
-import com.rulerbug.zoo.tables.Pages;
 import com.rulerbug.zoo.tables.records.AllbooksRecord;
 import com.rulerbug.zoo.tables.records.PagesRecord;
 import org.jooq.DSLContext;
 import org.jooq.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.method.annotation.InitBinderDataBinderFactory;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
-import java.util.concurrent.locks.ReentrantLock;
 
 @Controller
 @RequestMapping("/api")
