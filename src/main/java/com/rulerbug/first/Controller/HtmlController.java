@@ -49,6 +49,13 @@ public class HtmlController {
         return view;
     }
 
+    @RequestMapping("test.do")
+    public ModelAndView test() {
+        ModelAndView view = new ModelAndView("test");
+
+        return view;
+    }
+
     @RequestMapping("{bookid}/pages.do")
     public ModelAndView pages(@PathVariable("bookid") Long bookid) {
         ModelAndView view = new ModelAndView("pages");
