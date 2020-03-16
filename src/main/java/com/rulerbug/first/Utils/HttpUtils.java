@@ -78,6 +78,25 @@ public class HttpUtils {
         return new String(Base64.encodeBase64(data));
     }
 
+    public static String getBase64FromFile(File f) throws IOException {
+        FileInputStream in = new FileInputStream(f);
+
+        // 将图片文件转化为字节数组字符串，并对其进行Base64编码处理
+        byte[] data = null;
+        // 读取图片字节数组
+        ByteArrayOutputStream swapStream = new ByteArrayOutputStream();
+        byte[] buff = new byte[100];
+        int rc = 0;
+        while ((rc = in.read(buff, 0, 100)) > 0) {
+            swapStream.write(buff, 0, rc);
+        }
+        data = swapStream.toByteArray();
+        if (in != null) {
+            in.close();
+        }
+        return new String(Base64.encodeBase64(data));
+    }
+
 //    public static File insToFile(InputStream inputStream) throws IOException {
 //
 //        File file = new File("e:\\1.png");

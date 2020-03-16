@@ -5,8 +5,11 @@ package com.rulerbug.zoo;
 
 
 import com.rulerbug.zoo.tables.Allbooks;
+import com.rulerbug.zoo.tables.Limit;
 import com.rulerbug.zoo.tables.Pages;
+import com.rulerbug.zoo.tables.Role;
 import com.rulerbug.zoo.tables.User;
+import com.rulerbug.zoo.tables.Userinfo;
 import com.rulerbug.zoo.tables._Warning;
 
 import javax.annotation.Generated;
@@ -31,14 +34,29 @@ public class Tables {
     public static final Allbooks ALLBOOKS = Allbooks.ALLBOOKS;
 
     /**
+     * 权限信息
+     */
+    public static final Limit LIMIT = Limit.LIMIT;
+
+    /**
      * The table <code>mypages.pages</code>.
      */
     public static final Pages PAGES = Pages.PAGES;
 
     /**
+     * 角色信息
+     */
+    public static final Role ROLE = Role.ROLE;
+
+    /**
      * The table <code>mypages.user</code>.
      */
     public static final User USER = User.USER;
+
+    /**
+     * VIEW
+     */
+    public static final Userinfo USERINFO = Userinfo.USERINFO;
 
     /**
      * The table <code>mypages._WARNING</code>.

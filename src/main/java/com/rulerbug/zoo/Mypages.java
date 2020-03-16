@@ -5,8 +5,11 @@ package com.rulerbug.zoo;
 
 
 import com.rulerbug.zoo.tables.Allbooks;
+import com.rulerbug.zoo.tables.Limit;
 import com.rulerbug.zoo.tables.Pages;
+import com.rulerbug.zoo.tables.Role;
 import com.rulerbug.zoo.tables.User;
+import com.rulerbug.zoo.tables.Userinfo;
 import com.rulerbug.zoo.tables._Warning;
 
 import java.util.ArrayList;
@@ -33,7 +36,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Mypages extends SchemaImpl {
 
-    private static final long serialVersionUID = -2109320940;
+    private static final long serialVersionUID = -1843487377;
 
     /**
      * The reference instance of <code>mypages</code>
@@ -46,14 +49,29 @@ public class Mypages extends SchemaImpl {
     public final Allbooks ALLBOOKS = com.rulerbug.zoo.tables.Allbooks.ALLBOOKS;
 
     /**
+     * 权限信息
+     */
+    public final Limit LIMIT = com.rulerbug.zoo.tables.Limit.LIMIT;
+
+    /**
      * The table <code>mypages.pages</code>.
      */
     public final Pages PAGES = com.rulerbug.zoo.tables.Pages.PAGES;
 
     /**
+     * 角色信息
+     */
+    public final Role ROLE = com.rulerbug.zoo.tables.Role.ROLE;
+
+    /**
      * The table <code>mypages.user</code>.
      */
     public final User USER = com.rulerbug.zoo.tables.User.USER;
+
+    /**
+     * VIEW
+     */
+    public final Userinfo USERINFO = com.rulerbug.zoo.tables.Userinfo.USERINFO;
 
     /**
      * The table <code>mypages._WARNING</code>.
@@ -83,8 +101,11 @@ public class Mypages extends SchemaImpl {
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
             Allbooks.ALLBOOKS,
+            Limit.LIMIT,
             Pages.PAGES,
+            Role.ROLE,
             User.USER,
+            Userinfo.USERINFO,
             _Warning._WARNING);
     }
 }

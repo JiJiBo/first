@@ -2,12 +2,14 @@ package com.rulerbug.first.Controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.rulerbug.first.Utils.HttpUtils;
+import com.rulerbug.first.Utils.LimitUtils;
 import com.rulerbug.first.Utils.R;
 import com.rulerbug.first.Utils.TextUtils;
 import com.rulerbug.zoo.Tables;
 import com.rulerbug.zoo.tables.records.AllbooksRecord;
 import com.rulerbug.zoo.tables.records.PagesRecord;
 import com.rulerbug.zoo.tables.records.UserRecord;
+import com.rulerbug.zoo.tables.records.UserinfoRecord;
 import org.jooq.DSLContext;
 import org.jooq.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Map;
@@ -125,16 +128,56 @@ public class ApiController {
     public R getYCode(String imgUrl, String username, String password) throws IOException {
         //你的用户名
         //图片转换过的base64编码
-        UserRecord userRecord = dsl.selectFrom(Tables.USER).where(Tables.USER.NAME.eq(username).and(Tables.USER.PASSWORD.eq(password))).fetchAny();
-        if (userRecord == null) {
+        UserinfoRecord userinfoRecord = dsl.selectFrom(Tables.USERINFO).where(Tables.USERINFO.USER_NAME.eq(username).and(Tables.USERINFO.PASSWORD.eq(password))).fetchAny();
+        if (userinfoRecord == null) {
             return R.error("没有此用户");
         }
-        if (userRecord.getIsblack() != 0) {
-            return R.error("此用户被拉黑");
+        if (LimitUtils.isHaveSearch(LimitUtils.SKILLS.ISCANUSEYCODE, userinfoRecord.getLimitStr())) {
+            return R.error("此用户每有此权限");
         }
         String image = HttpUtils.httpToBase64(imgUrl);
         JSONObject obj = new JSONObject();
-        obj.put("username", userRecord.getName());
+        obj.put("username", userinfoRecord.getUserName());
+        obj.put("password", password);
+        //typeid为可选参数 根据文档填写说明填写1:纯数字 2:纯英文
+        //obj.put("typeid", "");
+        //modelid定制识别的模型id,发布成功后的模型id。注：有modelid为定向识别，不存在modelid为通用识别：可空
+        //obj.put("modelid", "");
+        obj.put("image", image);
+        try {
+            String url = "http://api.ttshitu.com/base64";
+            String ret = HttpUtils.httpRequestData(url, obj);
+            Map map = JSONObject.parseObject(ret);
+            if ((Boolean) map.get("success")) {
+                Map map1 = JSONObject.parseObject(String.valueOf(map.get("data")));
+                String result = (String) map1.get("result");
+                System.out.println("识别成功结果为:" + result);
+                return R.ok().put("data", result);
+            } else {
+                System.out.println("识别失败原因为:" + map.get("message"));
+                return R.error(map.get("message").toString());
+            }
+
+        } catch (Exception e) {
+            System.out.println("识别失败异常:");
+        }
+        return R.error();
+    }
+
+    @RequestMapping("/getYcodeByFile.do")
+    public R getYcodeByFile(File f, String username, String password) throws IOException {
+        //你的用户名
+        //图片转换过的base64编码
+        UserinfoRecord userinfoRecord = dsl.selectFrom(Tables.USERINFO).where(Tables.USERINFO.USER_NAME.eq(username).and(Tables.USERINFO.PASSWORD.eq(password))).fetchAny();
+        if (userinfoRecord == null) {
+            return R.error("没有此用户");
+        }
+        if (LimitUtils.isHaveSearch(LimitUtils.SKILLS.ISCANUSEYCODE, userinfoRecord.getLimitStr())) {
+            return R.error("此用户每有此权限");
+        }
+        String image = HttpUtils.getBase64FromFile(f);
+        JSONObject obj = new JSONObject();
+        obj.put("username", userinfoRecord.getUserName());
         obj.put("password", password);
         //typeid为可选参数 根据文档填写说明填写1:纯数字 2:纯英文
         //obj.put("typeid", "");
