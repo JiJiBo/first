@@ -1,5 +1,7 @@
 package com.rulerbug.first.Controller;
 
+import com.alibaba.fastjson.JSONObject;
+import com.rulerbug.first.Utils.HttpUtils;
 import com.rulerbug.first.Utils.R;
 import com.rulerbug.first.Utils.TextUtils;
 import com.rulerbug.zoo.Tables;
@@ -12,7 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/api")
@@ -114,5 +118,38 @@ public class ApiController {
         }
         dsl.delete(Tables.PAGES).where(Tables.PAGES.ID.eq(pageid)).execute();
         return R.ok();
+    }
+
+    @RequestMapping("/getYcode.do")
+    public R getYCode(String imgUrl, String username, String password) throws IOException {
+        //你的用户名
+        //图片转换过的base64编码
+        String image = HttpUtils.httpToBase64(imgUrl);
+        JSONObject obj = new JSONObject();
+        obj.put("username", username);
+        obj.put("password", password);
+        //typeid为可选参数 根据文档填写说明填写1:纯数字 2:纯英文
+        //obj.put("typeid", "");
+        //modelid定制识别的模型id,发布成功后的模型id。注：有modelid为定向识别，不存在modelid为通用识别：可空
+        //obj.put("modelid", "");
+        obj.put("image", image);
+        try {
+            String url = "http://api.ttshitu.com/base64";
+            String ret = HttpUtils.httpRequestData(url, obj);
+            Map map = JSONObject.parseObject(ret);
+            if ((Boolean) map.get("success")) {
+                Map map1 = JSONObject.parseObject(String.valueOf(map.get("data")));
+                String result = (String) map1.get("result");
+                System.out.println("识别成功结果为:" + result);
+                return R.ok().put("data", result);
+            } else {
+                System.out.println("识别失败原因为:" + map.get("message"));
+                return R.error(map.get("message").toString());
+            }
+
+        } catch (Exception e) {
+            System.out.println("识别失败异常:");
+        }
+        return R.error();
     }
 }
