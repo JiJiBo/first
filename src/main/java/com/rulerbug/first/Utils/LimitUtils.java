@@ -38,7 +38,7 @@ public class LimitUtils {
      * */
     public static enum SKILLS {
 
-        ISCANUSEYCODE(13);
+        ISCANUSEYCODE(0);
         private int index;
 
         private SKILLS(int index) {
