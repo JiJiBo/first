@@ -7,6 +7,7 @@ import com.rulerbug.first.Utils.TextUtils;
 import com.rulerbug.zoo.Tables;
 import com.rulerbug.zoo.tables.records.AllbooksRecord;
 import com.rulerbug.zoo.tables.records.PagesRecord;
+import com.rulerbug.zoo.tables.records.UserRecord;
 import org.jooq.DSLContext;
 import org.jooq.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -124,9 +125,16 @@ public class ApiController {
     public R getYCode(String imgUrl, String username, String password) throws IOException {
         //你的用户名
         //图片转换过的base64编码
+        UserRecord userRecord = dsl.selectFrom(Tables.USER).where(Tables.USER.NAME.eq(username).and(Tables.USER.PASSWORD.eq(password))).fetchAny();
+        if (userRecord == null) {
+            return R.error("没有此用户");
+        }
+        if (userRecord.getIsblack() != 0) {
+            return R.error("此用户被拉黑");
+        }
         String image = HttpUtils.httpToBase64(imgUrl);
         JSONObject obj = new JSONObject();
-        obj.put("username", username);
+        obj.put("username", userRecord.getName());
         obj.put("password", password);
         //typeid为可选参数 根据文档填写说明填写1:纯数字 2:纯英文
         //obj.put("typeid", "");

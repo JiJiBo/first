@@ -6,6 +6,7 @@ package com.rulerbug.zoo;
 
 import com.rulerbug.zoo.tables.Allbooks;
 import com.rulerbug.zoo.tables.Pages;
+import com.rulerbug.zoo.tables.User;
 import com.rulerbug.zoo.tables._Warning;
 
 import javax.annotation.Generated;
@@ -34,6 +35,7 @@ public class Indexes {
 
     public static final Index ALLBOOKS_PRIMARY = Indexes0.ALLBOOKS_PRIMARY;
     public static final Index PAGES_PRIMARY = Indexes0.PAGES_PRIMARY;
+    public static final Index USER_PRIMARY = Indexes0.USER_PRIMARY;
     public static final Index _WARNING_PRIMARY = Indexes0._WARNING_PRIMARY;
 
     // -------------------------------------------------------------------------
@@ -43,6 +45,7 @@ public class Indexes {
     private static class Indexes0 {
         public static Index ALLBOOKS_PRIMARY = Internal.createIndex("PRIMARY", Allbooks.ALLBOOKS, new OrderField[] { Allbooks.ALLBOOKS.ID }, true);
         public static Index PAGES_PRIMARY = Internal.createIndex("PRIMARY", Pages.PAGES, new OrderField[] { Pages.PAGES.ID }, true);
+        public static Index USER_PRIMARY = Internal.createIndex("PRIMARY", User.USER, new OrderField[] { User.USER.ID }, true);
         public static Index _WARNING_PRIMARY = Internal.createIndex("PRIMARY", _Warning._WARNING, new OrderField[] { _Warning._WARNING.ID }, true);
     }
 }

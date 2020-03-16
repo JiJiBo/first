@@ -6,6 +6,7 @@ package com.rulerbug.zoo;
 
 import com.rulerbug.zoo.tables.Allbooks;
 import com.rulerbug.zoo.tables.Pages;
+import com.rulerbug.zoo.tables.User;
 import com.rulerbug.zoo.tables._Warning;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Mypages extends SchemaImpl {
 
-    private static final long serialVersionUID = -1022005311;
+    private static final long serialVersionUID = -2109320940;
 
     /**
      * The reference instance of <code>mypages</code>
@@ -48,6 +49,11 @@ public class Mypages extends SchemaImpl {
      * The table <code>mypages.pages</code>.
      */
     public final Pages PAGES = com.rulerbug.zoo.tables.Pages.PAGES;
+
+    /**
+     * The table <code>mypages.user</code>.
+     */
+    public final User USER = com.rulerbug.zoo.tables.User.USER;
 
     /**
      * The table <code>mypages._WARNING</code>.
@@ -78,6 +84,7 @@ public class Mypages extends SchemaImpl {
         return Arrays.<Table<?>>asList(
             Allbooks.ALLBOOKS,
             Pages.PAGES,
+            User.USER,
             _Warning._WARNING);
     }
 }
