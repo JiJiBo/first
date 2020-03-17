@@ -133,7 +133,7 @@ public class ApiController {
             return R.error("没有此用户");
         }
         if (!LimitUtils.isHaveSearch(LimitUtils.SKILLS.ISCANUSEYCODE, userinfoRecord.getLimitStr())) {
-            return R.error("此用户每有此权限");
+            return R.error("此用户没有此权限");
         }
         String image = HttpUtils.httpToBase64(imgUrl);
         JSONObject obj = new JSONObject();
@@ -173,7 +173,7 @@ public class ApiController {
             return R.error("没有此用户");
         }
         if (!LimitUtils.isHaveSearch(LimitUtils.SKILLS.ISCANUSEYCODE, userinfoRecord.getLimitStr())) {
-            return R.error("此用户每有此权限");
+            return R.error("此用户没有此权限");
         }
         String image = HttpUtils.getBase64FromFile(f);
         JSONObject obj = new JSONObject();
