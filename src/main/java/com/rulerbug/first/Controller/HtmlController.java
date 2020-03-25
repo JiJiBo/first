@@ -2,6 +2,7 @@ package com.rulerbug.first.Controller;
 
 import com.rulerbug.first.Utils.L;
 import com.rulerbug.first.Utils.M;
+import com.rulerbug.first.Utils.R;
 import com.rulerbug.zoo.Tables;
 import com.rulerbug.zoo.tables.records.AllbooksRecord;
 import com.rulerbug.zoo.tables.records.PagesRecord;
@@ -120,6 +121,25 @@ public class HtmlController {
     @RequestMapping("creatABook.do")
     public ModelAndView creatABook() {
         ModelAndView view = new ModelAndView("creatABook");
+        return view;
+    }
+
+    @RequestMapping("toMyHome.do")
+    public ModelAndView toMyHome() {
+        ModelAndView view = new ModelAndView("toMyHome");
+        return view;
+    }
+
+    @RequestMapping("myhome.do")
+    public String  myhome(String password) {
+        if (!"159357nas+-LF".equals(password)) {
+            return "redirect:/";
+        }
+        return "redirect:/inmyhome.do";
+    }
+    @RequestMapping("inmyhome.do")
+    public ModelAndView inmyhome( ) {
+        ModelAndView view = new ModelAndView("myhome");
         return view;
     }
 }
