@@ -6,10 +6,8 @@ import com.rulerbug.first.Utils.LimitUtils;
 import com.rulerbug.first.Utils.R;
 import com.rulerbug.first.Utils.TextUtils;
 import com.rulerbug.zoo.Tables;
-import com.rulerbug.zoo.tables.records.AllbooksRecord;
-import com.rulerbug.zoo.tables.records.PagesRecord;
-import com.rulerbug.zoo.tables.records.UserRecord;
-import com.rulerbug.zoo.tables.records.UserinfoRecord;
+import com.rulerbug.zoo.tables.Postdata;
+import com.rulerbug.zoo.tables.records.*;
 import org.jooq.DSLContext;
 import org.jooq.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -202,6 +200,20 @@ public class ApiController {
             System.out.println("识别失败异常:");
         }
         return R.error();
+    }
+
+    @RequestMapping("/postErrorString.do")
+    public R postErrorString(String error, String pkg_name, String ver_name, String ver_code) {
+        PostdataRecord record = new PostdataRecord();
+        record.setData(error);
+        record.setPkgName(pkg_name);
+        record.setVerName(ver_name);
+        record.setVerCode(ver_code);
+        record.setTime(LocalDateTime.now());
+        PostdataRecord newRecord = dsl.newRecord(Tables.POSTDATA, record);
+        newRecord.insert();
+        newRecord.refresh();
+        return R.ok();
     }
 
 }

@@ -7,6 +7,7 @@ package com.rulerbug.zoo;
 import com.rulerbug.zoo.tables.Allbooks;
 import com.rulerbug.zoo.tables.Limit;
 import com.rulerbug.zoo.tables.Pages;
+import com.rulerbug.zoo.tables.Postdata;
 import com.rulerbug.zoo.tables.Role;
 import com.rulerbug.zoo.tables.User;
 import com.rulerbug.zoo.tables.Userinfo;
@@ -36,7 +37,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Mypages extends SchemaImpl {
 
-    private static final long serialVersionUID = -1843487377;
+    private static final long serialVersionUID = 1159854838;
 
     /**
      * The reference instance of <code>mypages</code>
@@ -57,6 +58,11 @@ public class Mypages extends SchemaImpl {
      * The table <code>mypages.pages</code>.
      */
     public final Pages PAGES = com.rulerbug.zoo.tables.Pages.PAGES;
+
+    /**
+     * The table <code>mypages.postData</code>.
+     */
+    public final Postdata POSTDATA = com.rulerbug.zoo.tables.Postdata.POSTDATA;
 
     /**
      * 角色信息
@@ -103,6 +109,7 @@ public class Mypages extends SchemaImpl {
             Allbooks.ALLBOOKS,
             Limit.LIMIT,
             Pages.PAGES,
+            Postdata.POSTDATA,
             Role.ROLE,
             User.USER,
             Userinfo.USERINFO,

@@ -7,6 +7,7 @@ package com.rulerbug.zoo;
 import com.rulerbug.zoo.tables.Allbooks;
 import com.rulerbug.zoo.tables.Limit;
 import com.rulerbug.zoo.tables.Pages;
+import com.rulerbug.zoo.tables.Postdata;
 import com.rulerbug.zoo.tables.Role;
 import com.rulerbug.zoo.tables.User;
 import com.rulerbug.zoo.tables.Userinfo;
@@ -42,6 +43,11 @@ public class Tables {
      * The table <code>mypages.pages</code>.
      */
     public static final Pages PAGES = Pages.PAGES;
+
+    /**
+     * The table <code>mypages.postData</code>.
+     */
+    public static final Postdata POSTDATA = Postdata.POSTDATA;
 
     /**
      * 角色信息
