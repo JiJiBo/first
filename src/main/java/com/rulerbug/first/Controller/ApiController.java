@@ -8,6 +8,8 @@ import com.rulerbug.first.Utils.TextUtils;
 import com.rulerbug.zoo.Tables;
 import com.rulerbug.zoo.tables.Postdata;
 import com.rulerbug.zoo.tables.records.*;
+import jdk.nashorn.internal.ir.RuntimeNode;
+import org.apache.catalina.connector.Request;
 import org.jooq.DSLContext;
 import org.jooq.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -203,12 +205,18 @@ public class ApiController {
     }
 
     @RequestMapping("/postErrorString.do")
-    public R postErrorString(String error, String pkg_name, String ver_name, String ver_code) {
+    public R postErrorString(Request request, String error, String pkg_name, String ver_name, String ver_code, String item1, String item2, String item3, String item4, String item5) {
         PostdataRecord record = new PostdataRecord();
         record.setData(error);
         record.setPkgName(pkg_name);
         record.setVerName(ver_name);
         record.setVerCode(ver_code);
+        record.setItem1(item1);
+        record.setItem2(item2);
+        record.setItem3(item3);
+        record.setItem4(item4);
+        record.setItem5(item5);
+        record.setIp(HttpUtils.getIpAddress(request));
         record.setTime(LocalDateTime.now());
         PostdataRecord newRecord = dsl.newRecord(Tables.POSTDATA, record);
         newRecord.insert();
