@@ -9,7 +9,7 @@ import com.rulerbug.zoo.Tables;
 import com.rulerbug.zoo.tables.Postdata;
 import com.rulerbug.zoo.tables.records.*;
 import jdk.nashorn.internal.ir.RuntimeNode;
-import org.apache.catalina.connector.Request;
+import org.apache.coyote.Request;
 import org.jooq.DSLContext;
 import org.jooq.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -205,7 +206,7 @@ public class ApiController {
     }
 
     @RequestMapping("/postErrorString.do")
-    public R postErrorString(Request request, String error, String pkg_name, String ver_name, String ver_code, String item1, String item2, String item3, String item4, String item5) {
+    public R postErrorString(HttpServletRequest request, String error, String pkg_name, String ver_name, String ver_code, String item1, String item2, String item3, String item4, String item5) {
         PostdataRecord record = new PostdataRecord();
         record.setData(error);
         record.setPkgName(pkg_name);

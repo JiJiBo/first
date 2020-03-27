@@ -2,9 +2,10 @@ package com.rulerbug.first.Utils;
 
 
 import com.alibaba.fastjson.JSONObject;
-import org.apache.catalina.connector.Request;
+import org.apache.coyote.Request;
 import org.apache.tomcat.util.codec.binary.Base64;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.InetAddress;
@@ -111,7 +112,7 @@ public class HttpUtils {
 //        return file;
 //    }
 //获取客户端IP地址
-    public static String getIpAddress(Request request) {
+    public static String getIpAddress(HttpServletRequest request) {
         String ip = request.getHeader("x-forwarded-for");
         if (ip == null || ip.length() == 0 || "unknow".equalsIgnoreCase(ip)) {
             ip = request.getHeader("Proxy-Client-IP");
