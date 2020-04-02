@@ -5,17 +5,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Welcome To Ruler Bug</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<h1>${bookname}</h1>
-<h2>作者  ${author}</h2>
-<a href="../${bookid?c}/addApage.do">写文章</a>
+<style>
+    .my_bt{width: 100px; margin-top: 30px;margin-left: 40px}
+    .my_bt2{ margin-top: 30px;margin-left: 40px}
+</style>
+<div class="page-header">
+    <h1>${bookname}
+        <small>作者  ${author}</small>
+    </h1>
+</div>
+<a href="../${bookid?c}/addApage.do"  class="btn btn-success  my_bt" >写文章</a>
 <br>
-<a href="../${bookid?c}/delTheBook.do">删除本书</a>
+<a href="../${bookid?c}/delTheBook.do"  class="btn btn-danger  my_bt" >删除本书</a>
 <br>
 <#list pages as page>
-<a href="../${page.id?c}/page.do">${page.title} ${page.smallTitle}</a><a>--------</a><a
-        href="../${page.id?c}/delThePage.do">删除本章节</a><br>
+<a href="../${page.id?c}/page.do"  class="btn btn-primary  my_bt2" >${page.title} ${page.smallTitle}</a> <a
+        href="../${page.id?c}/delThePage.do"  class="btn btn-danger  my_bt" >删除本章节</a><br>
 </#list>
 
 </body>

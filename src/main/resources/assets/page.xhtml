@@ -5,11 +5,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Welcome To Ruler Bug</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<h1>${title}</h1>
-<h2>${smalltitle}</h2>
-<p>
+<div class="page-header">
+    <h1>${title}
+        <small>${smalltitle}</small>
+    </h1>
+</div>
+<p class="well well-lg">
     ${context}
 </p>
 </body>
